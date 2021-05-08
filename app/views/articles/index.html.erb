@@ -1,0 +1,24 @@
+<h1>Listado de Articulos</h1>
+<%= link_to "Crear Articulo", articles_new_path %>
+<table>
+  <tr>
+    <thead>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Precio</th>
+      <th>Activo</th>
+    </thead>
+  </tr>
+    <% @articles.each do |article| %>
+  <tr>
+    <td><%= article.title %></td>
+    <td><%= article.description %></td>
+    <td><%= article.price %></td>
+    <td><%= article.active ? 'Activo' : 'Inactivo' %></td>
+    <td>
+      <%= link_to "Editar", edit_article_path(article) %>
+      <%= link_to "Eliminar", article, method: :delete, data: { confirm: "Deseas eliminar este artículo?"} %>
+    </td>
+  </tr>
+    <% end %>
+</table>
